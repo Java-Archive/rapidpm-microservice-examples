@@ -80,6 +80,23 @@
       </dependency>
       <!--JSON-->
 
+      <!-- Client Libs-->
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>fluent-hc</artifactId>
+        <version>4.5</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- Client Libs-->
+
+
       <!--kotlin-->
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>

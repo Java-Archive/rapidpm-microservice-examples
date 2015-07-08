@@ -17,6 +17,20 @@
       <artifactId>gson</artifactId>
     </dependency>
     <!--JSON-->
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>fluent-hc</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+
+
     <!--<dependency>-->
       <!--<groupId>org.jetbrains.kotlin</groupId>-->
       <!--<artifactId>kotlin-stdlib</artifactId>-->

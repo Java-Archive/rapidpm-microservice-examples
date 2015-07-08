@@ -1,5 +1,8 @@
 package org.rapidpm.microservice.demo;
 
+import org.apache.http.client.fluent.Content;
+import org.apache.http.client.fluent.Form;
+import org.apache.http.client.fluent.Request;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,18 +32,14 @@ public class ServletTest {
     Main.stop();
   }
 
-
-
   private final String url = "http://127.0.0.1:8080/" + Main.MYAPP +"/test"; //from Annotation Servlet
   private final String USER_AGENT = "Mozilla/5.0";
 
   @Test
-  public void testServletGetRequest() throws Exception {
+  public void testServletGetReq001() throws Exception {
     URL obj = new URL(url);
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-    // optional default is GET
     con.setRequestMethod("GET");
-    //add request header
     con.setRequestProperty("User-Agent", USER_AGENT);
 
     int responseCode = con.getResponseCode();
@@ -55,11 +54,20 @@ public class ServletTest {
       response.append(inputLine);
     }
     in.close();
-    System.out.println("response = " + response);
+//    System.out.println("response = " + response);
     Assert.assertEquals("Hello World CDI Service", response.toString());
-    //print result
+  }
+
+  @Test
+  public void testServletGetReq002() throws Exception {
+    final Content returnContent = Request.Get(url).execute().returnContent();
+    Assert.assertEquals("Hello World CDI Service", returnContent.asString());
+//    Request.Post("http://targethost/login")
+//        .bodyForm(Form.form().add("username",  "vip").add("password",  "secret").build())
+//        .execute().returnContent();
 
   }
+
 
   @Test
   public void testServletPostRequest() throws Exception {
