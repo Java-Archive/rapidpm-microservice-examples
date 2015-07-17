@@ -17,6 +17,7 @@ public class RestTest {
 
   @Before
   public void setUp() throws Exception {
+    System.setProperty(Main.RESTEASY_PORT, "7081");
     Main.deploy();
   }
 
@@ -34,7 +35,7 @@ public class RestTest {
     //MicroRestApp Path = /base
     //Resource Path = /test
 
-    final String restAppPath = "/base";
+    final String restAppPath = "/rest";
     final String ressourcePath = "/test";
     final String generateURL = TestPortProvider.generateURL(restAppPath + ressourcePath);
     System.out.println("generateURL = " + generateURL);

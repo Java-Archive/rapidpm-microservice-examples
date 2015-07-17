@@ -1,4 +1,4 @@
-# rapidpm-microervice-examples
+# rapidpm-microservice-examples
 
 Here you will find a few examples how to use the rapidpm-microservice project/framework.
 
