@@ -3,7 +3,6 @@ package org.rapidpm.microservice.demo.rest;
 import org.rapidpm.microservice.demo.service.BusinessModule;
 
 import javax.inject.Inject;
-import javax.jws.WebParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

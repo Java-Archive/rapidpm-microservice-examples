@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.demo.servlet.MessageServlet;
 
+import javax.servlet.annotation.WebServlet;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -32,7 +34,10 @@ public class ServletTest {
     Main.stop();
   }
 
-  private final String url = "http://127.0.0.1:7080/" + Main.MYAPP +"/test"; //from Annotation Servlet
+  private String url = "http://127.0.0.1:"+Main.PORT_SERVLET + "/"
+      + Main.MYAPP
+      + MessageServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
+
   private final String USER_AGENT = "Mozilla/5.0";
 
   @Test

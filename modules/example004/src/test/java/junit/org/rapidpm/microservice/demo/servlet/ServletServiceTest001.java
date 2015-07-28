@@ -17,15 +17,14 @@ import javax.servlet.annotation.WebServlet;
  */
 public class ServletServiceTest001 {
 
-  private String url = "http://127.0.0.1:7080/" + Main.MYAPP ; //from Annotation Servlet
-  private final String USER_AGENT = "Mozilla/5.0";
-
+  private String url = "http://127.0.0.1:"
+      + Main.PORT_SERVLET + "/"
+      + Main.MYAPP
+      + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.RESTEASY_PORT, "7081");
     Main.deploy();
-    url = url + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
     System.out.println("url = " + url);
   }
 
