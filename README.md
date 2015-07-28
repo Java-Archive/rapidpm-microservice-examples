@@ -9,3 +9,6 @@ here we could see how to create a REST and a Servlet Service.
 An example how to create e REST Service and using Kotlin for the data model.
 
 ##example003
+Show an empty Service
+
+##example004
