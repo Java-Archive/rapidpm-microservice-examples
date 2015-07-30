@@ -18,14 +18,16 @@
     </dependency>
     <!--JSON-->
 
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>fluent-hc</artifactId>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.apache.httpcomponents</groupId>-->
+      <!--<artifactId>httpclient</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.httpcomponents</groupId>-->
+      <!--<artifactId>fluent-hc</artifactId>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
 
     <!--<dependency>-->
       <!--<groupId>org.jetbrains.kotlin</groupId>-->

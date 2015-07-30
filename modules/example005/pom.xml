@@ -3,15 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-microservice-examples-modules</artifactId>
     <groupId>org.rapidpm.microservice</groupId>
+    <artifactId>rapidpm-microservice-examples-modules</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>./../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-microservice-examples-modules-example002</artifactId>
+  <artifactId>rapidpm-microservice-examples-modules-example005</artifactId>
+
+
   <dependencies>
+    <dependency>
+      <groupId>org.rapidpm.microservice</groupId>
+      <artifactId>rapidpm-microservice-modules-persistence-jdbc</artifactId>
+      <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+
     <!--JSON-->
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -19,15 +26,14 @@
     </dependency>
     <!--JSON-->
 
+
+
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib</artifactId>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.3.2</version>
+      <scope>test</scope>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>org.apache.httpcomponents</groupId>-->
-      <!--<artifactId>httpclient</artifactId>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
   </dependencies>
 
 </project>
