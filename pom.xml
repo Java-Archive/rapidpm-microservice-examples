@@ -119,6 +119,15 @@
         </executions>
       </plugin>
 
+      <!-- Generate coveralls reports from Travis -->
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <configuration>
+          <repoToken>MtaJdTDFVQJ0vKDhcVSdrPLfI0LlfyZw0</repoToken>
+        </configuration>
+      </plugin>
+
 
     </plugins>
   </build>
