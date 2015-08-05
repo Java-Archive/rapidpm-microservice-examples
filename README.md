@@ -29,12 +29,17 @@ develop:
 
 
 ##example001
+[![Dependency Status](https://www.versioneye.com/user/projects/55bb2961653762001a0019bb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55bb2961653762001a0019bb)
 here we could see how to create a REST and a Servlet Service.
 
 ##example002
+[![Dependency Status](https://www.versioneye.com/user/projects/55bb23976537620020001996/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55bb23976537620020001996)
 An example how to create e REST Service and using Kotlin for the data model.
 
 ##example003
 Show an empty Service
 
 ##example004
+
+##example005
+[![Dependency Status](https://www.versioneye.com/user/projects/55bb2399653762002000199b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55bb2399653762002000199b)
