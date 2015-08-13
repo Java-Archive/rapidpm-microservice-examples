@@ -16,7 +16,7 @@ public class ServiceProducer implements Producer<Service> {
     return ServiceAdapterBuilder
         .newBuilder()
         .setOriginal(null)
-        .withDoWork(() -> "mocked-" + LocalDateTime.now())
+        .withDoWork(() -> "mockedHoppel-" + LocalDateTime.now())
         .buildForTarget(Service.class);
   }
 }
