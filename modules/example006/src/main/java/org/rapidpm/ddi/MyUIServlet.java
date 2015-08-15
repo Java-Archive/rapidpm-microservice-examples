@@ -14,6 +14,6 @@ import java.time.LocalDateTime;
 public class MyUIServlet extends VaadinServlet {
 
   public MyUIServlet() {
-    System.out.println("MyUIServletInternal - LocalDateTime.now() = " + LocalDateTime.now());
+    System.out.println("MyUIServlet - LocalDateTime.now() = " + LocalDateTime.now());
   }
 }

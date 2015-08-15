@@ -1,4 +1,4 @@
-package org.rapidpm.microservice.demo;
+package junit.org.rapidpm.microservice.demo;
 
 import com.google.gson.Gson;
 import org.jboss.resteasy.test.TestPortProvider;

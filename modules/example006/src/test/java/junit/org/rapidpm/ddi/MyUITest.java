@@ -1,13 +1,11 @@
-package org.rapidpm.ddi;
+package junit.org.rapidpm.ddi;
 
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import org.rapidpm.ddi.DI;
+import org.rapidpm.ddi.MyUIServlet;
 import org.rapidpm.ddi.reflections.ReflectionUtils;
-import org.rapidpm.ddi.reflections.ReflectionsModel;
 import org.rapidpm.microservice.Main;
 
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +19,7 @@ public class MyUITest {
 
   @Before
   public void setUp() throws Exception {
+    DI.activatePackages("junit.org.rapidpm");
     Main.deploy();
   }
 
@@ -34,9 +33,9 @@ public class MyUITest {
       + Main.MYAPP
       + MyUIServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 
-  @Test
+  @Test @Ignore
   public void test001() throws Exception {
-    final Set<Class<?>> typesAnnotatedWith = ReflectionsModel.REFLECTIONS.getTypesAnnotatedWith(WebServlet.class);
+    final Set<Class<?>> typesAnnotatedWith = DI.getTypesAnnotatedWith(WebServlet.class);
     for (Class<?> aClass : typesAnnotatedWith) {
       Assert.assertEquals(MyUIServlet.class, aClass);
     }
@@ -55,7 +54,7 @@ public class MyUITest {
     final Content returnContent = Request.Get(url).execute().returnContent();
     final String actual = returnContent.asString();
 //    System.out.println("actual = " + actual);
-    Thread.sleep(10_000);
+//    Thread.sleep(10_000);
 //    Request.Post("http://targethost/login")
 //        .bodyForm(Form.form().add("username",  "vip").add("password",  "secret").build())
 //        .execute().returnContent();

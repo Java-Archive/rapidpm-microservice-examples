@@ -1,8 +1,9 @@
-package org.rapidpm.microservice;
+package junit.org.rapidpm.microservice;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.rapidpm.microservice.Main;
 
 /**
  * Created by svenruppert on 10.07.15.
