@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.ddi.reflections.ReflectionUtils;
-import org.rapidpm.ddi.reflections.ReflectionsSingleton;
+import org.rapidpm.ddi.reflections.ReflectionsModel;
 import org.rapidpm.microservice.Main;
 
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +36,7 @@ public class MyUITest {
 
   @Test
   public void test001() throws Exception {
-    final Set<Class<?>> typesAnnotatedWith = ReflectionsSingleton.REFLECTIONS.getTypesAnnotatedWith(WebServlet.class);
+    final Set<Class<?>> typesAnnotatedWith = ReflectionsModel.REFLECTIONS.getTypesAnnotatedWith(WebServlet.class);
     for (Class<?> aClass : typesAnnotatedWith) {
       Assert.assertEquals(MyUIServlet.class, aClass);
     }
