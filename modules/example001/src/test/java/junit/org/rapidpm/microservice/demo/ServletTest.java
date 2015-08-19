@@ -33,7 +33,7 @@ public class ServletTest {
     Main.stop();
   }
 
-  private String url = "http://127.0.0.1:"+Main.PORT_SERVLET + "/"
+  private String url = "http://127.0.0.1:"+Main.PORT_SERVLET
       + Main.MYAPP
       + MessageServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 

@@ -3,20 +3,16 @@ package org.rapidpm.ddi;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import org.rapidpm.ddi.services.Service;
-import org.reflections.util.ClasspathHelper;
 
 import javax.inject.Inject;
-import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 /**
  *
  */
-@Theme("mytheme")
+@Theme("valo")
 @Widgetset("org.rapidpm.ddi.MyAppWidgetset")
 public class MyUI extends UI {
 
@@ -34,18 +30,17 @@ public class MyUI extends UI {
 
   @Override
   protected void init(VaadinRequest vaadinRequest) {
-    final Collection<URL> urlsWebInfLib = ClasspathHelper.forWebInfLib(VaadinServlet.getCurrent().getServletContext());
 
+//    final ServletContext servletContext = VaadinServlet.getCurrent().getServletContext();
+//    final Collection<URL> urlsWebInfLib = ClasspathHelper.forWebInfLib(servletContext);
 //    final Iterator<URL> iterator = urlsWebInfLib.iterator();
 //    while (iterator.hasNext()) {
 //      URL next = iterator.next();
 //      if ( ! next.toString().contains("rapidpm")) iterator.remove();
 //    }
+//    DI.activatePackages("org.rapidpm", urlsWebInfLib);
 
-    System.out.println("LocalDateTime.now() = " + LocalDateTime.now());
-    DI.activatePackages("org.rapidpm", urlsWebInfLib);
-    System.out.println("LocalDateTime.now() = " + LocalDateTime.now());
-
+    DI.activatePackages("org.rapidpm");
     //inject
     DI.activateDI(this);
 
