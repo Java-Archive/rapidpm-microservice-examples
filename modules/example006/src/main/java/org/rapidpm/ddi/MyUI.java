@@ -1,7 +1,6 @@
 package org.rapidpm.ddi;
 
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 import org.rapidpm.ddi.services.Service;
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
  *
  */
 @Theme("valo")
-@Widgetset("org.rapidpm.ddi.MyAppWidgetset")
 public class MyUI extends UI {
 
   public MyUI() {

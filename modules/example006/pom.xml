@@ -13,28 +13,7 @@
   <artifactId>rapidpm-microservice-examples-modules-example006</artifactId>
   <packaging>war</packaging>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-bom</artifactId>
-        <version>7.5.3</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
-
-
-    <dependency>
-      <groupId>org.stagemonitor</groupId>
-      <artifactId>stagemonitor-web</artifactId>
-      <version>0.16.2</version>
-    </dependency>
-
-
     <!--added be Sven-->
     <dependency>
       <groupId>org.rapidpm.dynamic-cdi</groupId>
@@ -60,33 +39,37 @@
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-server</artifactId>
+      <version>${vaadin.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.vaadin.external.google</groupId>
+          <artifactId>guava</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.vaadin</groupId>
+          <artifactId>vaadin-sass-compiler</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.vaadin.external.flute</groupId>
+          <artifactId>flute</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-push</artifactId>
+      <version>${vaadin.version}</version>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-client</artifactId>
+      <version>${vaadin.version}</version>
       <scope>provided</scope>
     </dependency>
-    <!--
-		  Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory).
-
-		  For widgetset compilation, vaadin-client-compiler is automatically added on the
-		  compilation classpath by vaadin-maven-plugin so normally there is no need for an
-		  explicit dependency.
-		-->
-    <!--
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-client-compiler</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		-->
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-themes</artifactId>
+      <version>${vaadin.version}</version>
     </dependency>
   </dependencies>
 
@@ -94,25 +77,6 @@
     <plugins>
 
       <!--added by Sven-->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-
-              <sources>
-                <source>${project.build.directory}/generated-sources/annotations</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
@@ -142,14 +106,6 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -160,34 +116,17 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-maven-plugin</artifactId>
-        <version>7.5.1</version>
-        <configuration>
-
-          <persistentunitcachedir>${project.build.directory}/gwtdirt</persistentunitcachedir>
-
-          <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
-          <webappDirectory>${basedir}/target/classes/VAADIN/widgetsets</webappDirectory>
-          <draftCompile>false</draftCompile>
-          <compileReport>false</compileReport>
-          <style>OBF</style>
-          <strict>true</strict>
-        </configuration>
+        <groupId>in.virit.vwscdn</groupId>
+        <artifactId>vwscdn-maven-plugin</artifactId>
+        <version>${vwscdn.version}</version>
         <executions>
           <execution>
+            <phase>generate-sources</phase>
             <goals>
-              <goal>update-widgetset</goal>
-              <goal>compile</goal>
-              <!-- disabled by default to use on-the-fly theme compilation -->
-              <!-- <goal>compile-theme</goal> -->
+              <goal>generate</goal>
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -240,7 +179,15 @@
                 <filter>
                   <artifact>*:*</artifact>
                   <excludes>
+                    <!--<exclude>com/google/**</exclude>-->
+                    <exclude>VAADIN/themes/runo/**</exclude>
+                    <exclude>VAADIN/themes/reindeer/**</exclude>
+                    <exclude>VAADIN/themes/chameleon/**</exclude>
+                    <exclude>VAADIN/themes/liferay/**</exclude>
+                    <exclude>img/**</exclude>
+                    <exclude>css/**</exclude>
                     <exclude>**/*.java</exclude>
+                    <exclude>**/*.scss</exclude>
                   </excludes>
                 </filter>
               </filters>
