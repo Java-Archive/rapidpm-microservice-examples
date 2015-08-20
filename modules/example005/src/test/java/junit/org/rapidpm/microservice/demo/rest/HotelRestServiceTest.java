@@ -3,7 +3,6 @@ package junit.org.rapidpm.microservice.demo.rest;
 import com.zaxxer.hikari.HikariDataSource;
 import org.hsqldb.server.Server;
 import org.jboss.resteasy.test.TestPortProvider;
-import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -146,7 +145,6 @@ public class HotelRestServiceTest {
 
   }
 
-  @NotNull
   private void createTableForTest() throws SQLException {
     final Connection connection = connectionPools.getDataSource(HotelDAO.POOLNAME).getConnection();
     connection.prepareStatement("drop table hotels if exists;").execute();
