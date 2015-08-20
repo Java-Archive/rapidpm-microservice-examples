@@ -20,6 +20,45 @@ develop:
 [![Coverage Status](https://coveralls.io/repos/RapidPM/rapidpm-microservice-examples/badge.svg?branch=develop&service=github)](https://coveralls.io/github/RapidPM/rapidpm-microservice-examples?branch=develop)
 
 
+# Activating Kotlin
+If you want to use Kotlin you have to activated it in your pom.xml.
+The compile plugin defined in the rapidpm-dependencies is prepared to
+handle the live-cycle. Additionally you have to add the dep into your pom.xml
+
+```
+      <plugin>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <version>${kotlin.version}</version>
+
+        <executions>
+          <execution>
+            <id>compile</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>test-compile</id>
+            <phase>process-test-sources</phase>
+            <goals>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+```
+and
+
+```
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+```
+
 
 
 
