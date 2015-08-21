@@ -17,7 +17,7 @@ public class RestTest {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.RESTEASY_PORT, "7081");
+    System.setProperty(Main.RESTEASY_PORT, Main.PORT_REST+"");
     Main.deploy();
   }
 
