@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebServlet;
 public class ServletServiceTest001 {
 
   private String url = "http://127.0.0.1:"
-      + Main.PORT_SERVLET + "/"
+      + Main.DEFAULT_SERVLET_PORT + "/"
       + Main.MYAPP
       + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 

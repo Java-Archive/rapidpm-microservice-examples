@@ -29,7 +29,7 @@ public class MyUITest {
   }
 
 
-  private String url = "http://127.0.0.1:"+Main.PORT_SERVLET + "/"
+  private String url = "http://127.0.0.1:"+Main.DEFAULT_SERVLET_PORT
       + Main.MYAPP
       + MyUIServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 

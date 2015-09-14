@@ -53,7 +53,6 @@ public class HotelRestServiceTest {
 
     connectionPools.connectPools();
 
-    System.setProperty(Main.RESTEASY_PORT, Main.PORT_REST + "");
     Main.deploy();
 
     generateURL = TestPortProvider.generateURL(restAppPath + ressourcePath);

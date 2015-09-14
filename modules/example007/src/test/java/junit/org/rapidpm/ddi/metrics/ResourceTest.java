@@ -16,14 +16,13 @@ import static org.assertj.core.api.Assertions.*;
 public class ResourceTest {
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.RESTEASY_PORT, "7081");
-//    Main.deploy();
+    Main.deploy();
   }
 
 
   @After
   public void tearDown() throws Exception {
-//    Main.stop();
+    Main.stop();
   }
 
 
