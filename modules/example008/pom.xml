@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>rapidpm-microservice-examples-modules</artifactId>
+    <groupId>org.rapidpm.microservice</groupId>
+    <version>0.0.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>rapidpm-microservice-examples-modules-example008</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+    <module>services</module>
+  </modules>
+
+
+  <dependencies>
+    <!--TDD-->
+    <dependency>
+      <groupId>org.rapidpm.microservice</groupId>
+      <artifactId>rapidpm-microservice-modules-core-testutils</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!--TDD-->
+
+  </dependencies>
+</project>
