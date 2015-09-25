@@ -12,7 +12,6 @@
   <artifactId>rapidpm-microservice-examples-modules-example008-services-ms02</artifactId>
 
 
-
   <build>
     <plugins>
       <plugin>

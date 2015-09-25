@@ -24,6 +24,6 @@ public class BusinessService {
   @Produces("text/plain")
   public int add(@PathParam("a") int a, @PathParam("b") int b) {
     System.out.println("add called = " + LocalDateTime.now());
-    return service.remoteAdd(a,b);
+    return service.remoteAdd(a, b);
   }
 }

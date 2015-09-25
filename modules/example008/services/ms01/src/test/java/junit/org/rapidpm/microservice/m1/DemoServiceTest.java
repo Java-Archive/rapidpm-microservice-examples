@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.rapidpm.ddi.DI;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.m1.DemoService;
-import org.rapidpm.microservice.rest.admin.BasicAdministration;
 import org.rapidpm.microservice.test.RestUtils;
 
 import javax.ws.rs.client.Client;
@@ -46,11 +45,11 @@ public class DemoServiceTest {
     Assert.assertEquals(200, response.getStatus());
     final Response.StatusType statusInfo = response.getStatusInfo();
     final String reasonPhrase = statusInfo.getReasonPhrase();
-    Assert.assertEquals("OK",reasonPhrase);
+    Assert.assertEquals("OK", reasonPhrase);
     Integer result = response.readEntity(Integer.class);
 
     Assert.assertNotNull(result);
-    Assert.assertEquals(Integer.valueOf(3),result);
+    Assert.assertEquals(Integer.valueOf(3), result);
     client.close();
 
 

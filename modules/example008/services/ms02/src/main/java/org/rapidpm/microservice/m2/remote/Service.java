@@ -7,5 +7,5 @@ import org.rapidpm.proxybuilder.dynamicobjectadapter.DynamicObjectAdapterBuilder
  */
 @DynamicObjectAdapterBuilder
 public interface Service {
-  int remoteAdd(int a,int b);
+  int remoteAdd(int a, int b);
 }

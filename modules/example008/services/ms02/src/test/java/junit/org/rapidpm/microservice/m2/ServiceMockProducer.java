@@ -15,7 +15,7 @@ public class ServiceMockProducer implements Producer<Service> {
   public Service create() {
     return ServiceAdapterBuilder.newBuilder()
         .setOriginal(null)
-        .withRemoteAdd((a, b) -> a+b)
+        .withRemoteAdd((a, b) -> a + b)
         .buildForTarget(Service.class);
   }
 }
