@@ -21,7 +21,7 @@ public class PojoResource {
     final DataHolder dataHolder = new DataHolder();
     dataHolder.setTxtA("A");
     dataHolder.setTxtb("B");
-    return  new Gson().toJson(dataHolder);
+    return new Gson().toJson(dataHolder);
   }
 
 

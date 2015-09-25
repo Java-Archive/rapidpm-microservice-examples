@@ -17,6 +17,10 @@ import java.util.Set;
  */
 public class MyUITest {
 
+  private String url = "http://127.0.0.1:" + Main.DEFAULT_SERVLET_PORT
+      + Main.MYAPP
+      + MyUIServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
+
   @Before
   public void setUp() throws Exception {
     DI.activatePackages("junit.org.rapidpm");
@@ -28,12 +32,8 @@ public class MyUITest {
     Main.stop();
   }
 
-
-  private String url = "http://127.0.0.1:"+Main.DEFAULT_SERVLET_PORT
-      + Main.MYAPP
-      + MyUIServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
-
-  @Test @Ignore
+  @Test
+  @Ignore
   public void test001() throws Exception {
     final Set<Class<?>> typesAnnotatedWith = DI.getTypesAnnotatedWith(WebServlet.class);
     for (Class<?> aClass : typesAnnotatedWith) {

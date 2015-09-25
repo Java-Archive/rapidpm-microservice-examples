@@ -42,7 +42,7 @@ public class RestServiceTest001 {
         .queryParam("txt", "hello")
         .request()
         .get(String.class);
-    Assert.assertEquals("hello"+ ServiceImplA.class.getSimpleName(), val);
+    Assert.assertEquals("hello" + ServiceImplA.class.getSimpleName(), val);
     client.close();
   }
 

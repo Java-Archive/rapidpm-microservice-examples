@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.rapidpm.microservice</groupId>
     <artifactId>rapidpm-microservice-examples-modules</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
 
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -25,7 +25,6 @@
       <artifactId>gson</artifactId>
     </dependency>
     <!--JSON-->
-
 
 
     <dependency>

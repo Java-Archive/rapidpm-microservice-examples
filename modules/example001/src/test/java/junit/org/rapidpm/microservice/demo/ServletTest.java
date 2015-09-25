@@ -22,22 +22,20 @@ import java.net.URL;
  */
 public class ServletTest {
 
+  private final String USER_AGENT = "Mozilla/5.0";
+  private String url = "http://127.0.0.1:" + Main.DEFAULT_SERVLET_PORT
+      + Main.MYAPP
+      + MessageServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
+
   @Before
   public void setUp() throws Exception {
     Main.deploy();
   }
 
-
   @After
   public void tearDown() throws Exception {
     Main.stop();
   }
-
-  private String url = "http://127.0.0.1:"+Main.DEFAULT_SERVLET_PORT
-      + Main.MYAPP
-      + MessageServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
-
-  private final String USER_AGENT = "Mozilla/5.0";
 
   @Test
   public void testServletGetReq001() throws Exception {

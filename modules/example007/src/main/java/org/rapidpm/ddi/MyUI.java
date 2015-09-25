@@ -17,17 +17,17 @@ import java.time.LocalDateTime;
 @Theme("valo")
 public class MyUI extends UI {
 
+  @Inject Service service;
+
   public MyUI() {
     System.out.println("MyUI() - LocalDateTime.now() = " + LocalDateTime.now());
   }
+
 
   public MyUI(final Component content) {
     super(content);
     System.out.println("MyUI(content) - LocalDateTime.now() = " + LocalDateTime.now());
   }
-
-
-  @Inject Service service;
 
   @Override
   protected void init(VaadinRequest vaadinRequest) {
@@ -63,8 +63,6 @@ public class MyUI extends UI {
     layout.addComponent(button);
 
   }
-
-
 
 
 }

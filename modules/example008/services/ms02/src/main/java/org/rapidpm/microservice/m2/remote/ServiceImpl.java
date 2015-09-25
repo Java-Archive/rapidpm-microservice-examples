@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class ServiceImpl implements Service {
   private static final String SERVICE_URL = "http://127.0.0.1:" + Main.DEFAULT_REST_PORT + Main.CONTEXT_PATH_REST + "/demoservice";
   private static final Client CLIENT = ClientBuilder.newClient(); // to expensive
+
   public ServiceImpl() {
     System.out.println("ServiceImpl.now() = " + LocalDateTime.now());
   }

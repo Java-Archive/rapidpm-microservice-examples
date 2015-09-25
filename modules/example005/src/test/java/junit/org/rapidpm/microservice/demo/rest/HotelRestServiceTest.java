@@ -26,11 +26,10 @@ import java.sql.SQLException;
 public class HotelRestServiceTest {
 
 
-  private Server hsqlServer = null;
-  private JDBCConnectionPools connectionPools;
-
   private final String restAppPath = Main.CONTEXT_PATH_REST;
   private final String ressourcePath = "/" + HotelRestService.class.getAnnotation(Path.class).value();
+  private Server hsqlServer = null;
+  private JDBCConnectionPools connectionPools;
   private String generateURL;
 
   @Before
@@ -40,13 +39,13 @@ public class HotelRestServiceTest {
     hsqlServer.setLogWriter(null);
     hsqlServer.setSilent(true);
     hsqlServer.setDatabaseName(0, "iva");
-    hsqlServer.setDatabasePath(0, "file:target/"+HotelRestServiceTest.class.getSimpleName());
+    hsqlServer.setDatabasePath(0, "file:target/" + HotelRestServiceTest.class.getSimpleName());
     hsqlServer.start();
 
     connectionPools = JDBCConnectionPools.instance()
         .addJDBCConnectionPool(HotelDAO.POOLNAME)
         .withAutoCommit(false)
-        .withJdbcURL("jdbc:hsqldb:file:target/"+HotelRestServiceTest.class.getSimpleName())
+        .withJdbcURL("jdbc:hsqldb:file:target/" + HotelRestServiceTest.class.getSimpleName())
         .withUsername("sa")
         .withPasswd("")
         .done();
@@ -75,13 +74,51 @@ public class HotelRestServiceTest {
     Client client = ClientBuilder.newClient();
     final String uri = generateURL;
     final Response response = client.target(uri)
-        .queryParam("hotelname", "hotel") .queryParam("price", "9898")
+        .queryParam("hotelname", "hotel").queryParam("price", "9898")
         .request().get();
     Assert.assertEquals(200, response.getStatus());
     client.close();
 
     //hole aus db
     checkAllValues("hotel", 9898);
+  }
+
+  private void createTableForTest() throws SQLException {
+    final Connection connection = connectionPools.getDataSource(HotelDAO.POOLNAME).getConnection();
+    connection.prepareStatement("drop table hotels if exists;").execute();
+    connection.prepareStatement("create table hotels (hotelname varchar(20) not null, price integer NOT NULL );").execute();
+    connection.commit();
+    connection.close();
+  }
+
+  private boolean checkAllValues(String hotelname, int price) {
+    Connection connection = null;
+
+    try {
+      final HikariDataSource dataSource = connectionPools.getDataSource(HotelDAO.POOLNAME);
+      connection = dataSource.getConnection();
+
+      ResultSet rs = connection.createStatement().executeQuery("select * from hotels;");
+      int counter = 0;
+      while (rs.next()) {
+        counter = counter + 1;
+        Assert.assertEquals(hotelname, rs.getString("HOTELNAME"));
+        Assert.assertEquals(price, rs.getInt("PRICE"));
+      }
+      Assert.assertEquals(1, counter);
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("e = " + e);
+      return false;
+    } finally {
+      try {
+        if (connection != null) connection.close();
+      } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println("e = " + e);
+      }
+    }
+    return true;
   }
 
   @Test
@@ -117,7 +154,6 @@ public class HotelRestServiceTest {
     checkAllValues("hotel", 9898);
   }
 
-
   @Test
   public void testLoad001() throws Exception {
     try {
@@ -142,45 +178,6 @@ public class HotelRestServiceTest {
     client.close();
 
 
-  }
-
-  private void createTableForTest() throws SQLException {
-    final Connection connection = connectionPools.getDataSource(HotelDAO.POOLNAME).getConnection();
-    connection.prepareStatement("drop table hotels if exists;").execute();
-    connection.prepareStatement("create table hotels (hotelname varchar(20) not null, price integer NOT NULL );").execute();
-    connection.commit();
-    connection.close();
-  }
-
-
-  private boolean checkAllValues(String hotelname, int price) {
-    Connection connection = null;
-
-    try {
-      final HikariDataSource dataSource = connectionPools.getDataSource(HotelDAO.POOLNAME);
-      connection = dataSource.getConnection();
-
-      ResultSet rs = connection.createStatement().executeQuery("select * from hotels;");
-      int counter = 0;
-      while (rs.next()) {
-        counter = counter + 1;
-        Assert.assertEquals(hotelname, rs.getString("HOTELNAME"));
-        Assert.assertEquals(price, rs.getInt("PRICE"));
-      }
-      Assert.assertEquals(1, counter);
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.println("e = " + e);
-      return false;
-    } finally {
-      try {
-        if (connection != null) connection.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-        System.out.println("e = " + e);
-      }
-    }
-    return true;
   }
 
 

@@ -38,7 +38,7 @@ public class ServletServiceTest001 {
   @Test
   public void testServletGetReq002() throws Exception {
     final Content returnContent = Request.Get(url + "?txt=hello").execute().returnContent();
-    Assert.assertEquals("hello"+ ServiceImplA.class.getSimpleName(), returnContent.asString());
+    Assert.assertEquals("hello" + ServiceImplA.class.getSimpleName(), returnContent.asString());
   }
 
 

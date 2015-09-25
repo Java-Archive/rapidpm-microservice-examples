@@ -1,14 +1,14 @@
 package junit.org.rapidpm.ddi.metrics;
 
 import org.jboss.resteasy.test.TestPortProvider;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.rapidpm.microservice.Main;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-
-import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by svenruppert on 20.08.15.
@@ -26,8 +26,8 @@ public class ResourceTest {
   }
 
 
-
-  @Test @Ignore
+  @Test
+  @Ignore
   public void testGet001() throws Exception {
     Client client = ClientBuilder.newClient();
     //MicroRestApp Path = /base

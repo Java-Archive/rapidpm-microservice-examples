@@ -9,19 +9,23 @@ import java.util.Objects;
  */
 public class Metrics {
   private static Metrics ourInstance = new Metrics();
+  public List<KeyValue> data = new ArrayList<>();
+
+  private Metrics() {
+  }
 
   public static Metrics getInstance() {
     return ourInstance;
   }
 
-  private Metrics() {
-  }
-
-  public List<KeyValue> data = new ArrayList<>();
-
   public static class KeyValue {
     private String key;
     private String value;
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(key, value);
+    }
 
     @Override
     public boolean equals(final Object o) {
@@ -30,11 +34,6 @@ public class Metrics {
       final KeyValue keyValue = (KeyValue) o;
       return Objects.equals(key, keyValue.key) &&
           Objects.equals(value, keyValue.value);
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(key, value);
     }
 
     @Override
