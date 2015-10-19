@@ -2,55 +2,62 @@ package junit.org.rapidpm.microservice.filestoredemo.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import junit.org.rapidpm.microservice.filestoredemo.BaseMicroserviceTest;
 import org.jboss.resteasy.test.TestPortProvider;
-import org.junit.*;
-import org.rapidpm.microservice.Main;
+import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreAction;
+import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
+import org.rapidpm.microservice.filestoredemo.impl.RequestEncodingHelper;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.xml.bind.DatatypeConverter;
-import java.util.Base64;
 
 /**
  * Created by b.bosch on 13.10.2015.
  */
-public class RestTest {
-
-    @Before
-    public void setUp() throws Exception {
-        Main.deploy();
-    }
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class RestTest extends BaseMicroserviceTest{
 
 
-    @After
-    public void tearDown() throws Exception {
-        Main.stop();
-    }
+    private final String FILE_CONTENT = "Test Hallo";
 
     @Test
-    public void testFirstInstert() throws Exception {
-        String jsonBase64 = Base64.getEncoder().encodeToString(getInsertJson().getBytes());
-
+    public void testRest001() throws Exception {
+        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getRestoreJson());
         String response = testJsonRequest(jsonBase64);
-        Assert.assertNotNull(response);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.NOT_ARCHIVED, fileStoreResponse.status);
+
     }
     @Test
-    public void testIfInsertWorked() throws Exception {
-        String jsonBase64 = Base64.getEncoder().encodeToString(getCheckJson().getBytes());
-
+    public void testRest002() throws Exception {
+        final String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getInsertJson());
         String response = testJsonRequest(jsonBase64);
-        Assert.assertNotNull(response);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.ARCHIVED, fileStoreResponse.status);
     }
-
     @Test
-    public void testRestore() throws Exception {
-        String jsonBase64 = Base64.getEncoder().encodeToString(getRestoreJson().getBytes());
-
+    public void testRest003() throws JsonProcessingException {
+        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getRestoreJson());
         String response = testJsonRequest(jsonBase64);
-        Assert.assertNotNull(response);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.RESTORED, fileStoreResponse.status);
+        Assert.assertEquals(FILE_CONTENT, RequestEncodingHelper.decodeFromBase64(fileStoreResponse.base64File));
     }
+    @Test
+    public void testRest004() throws Exception {
+        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getCheckJson());
+        String response = testJsonRequest(jsonBase64);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.ALREADY_ARCHIVED, fileStoreResponse.status);
+    }
+
+
 
     private String testJsonRequest(String jsonBase64) {
         Client client = ClientBuilder.newClient();
@@ -74,7 +81,7 @@ public class RestTest {
 
         message.action = FileStoreAction.ARCHIVE;
         message.fileName = "TEST.XML";
-        message.fileContend = DatatypeConverter.printBase64Binary("Test Hallo".getBytes()).getBytes();
+        message.fileContend = RequestEncodingHelper.encodeIntoBase64(FILE_CONTENT).getBytes();
 
         ObjectMapper mapper = new ObjectMapper();
 

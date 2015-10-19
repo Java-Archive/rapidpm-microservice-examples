@@ -1,5 +1,6 @@
 package junit.org.rapidpm.microservice.filestoredemo.servlet;
 
+import junit.org.rapidpm.microservice.filestoredemo.BaseMicroserviceTest;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.After;
@@ -11,7 +12,7 @@ import org.rapidpm.microservice.filestoredemo.api.FileStoreAction;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
 import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
-import org.rapidpm.microservice.filestoredemo.impl.RequestEncoder;
+import org.rapidpm.microservice.filestoredemo.impl.RequestEncodingHelper;
 import org.rapidpm.microservice.filestoredemo.servlet.ServletService;
 
 import javax.servlet.annotation.WebServlet;
@@ -23,24 +24,13 @@ import java.util.Base64;
 /**
  * Created by b.bosch on 13.10.2015.
  */
-public class ServletTest {
+public class ServletTest extends BaseMicroserviceTest{
 
-    private String url = "http://127.0.0.1:"
+    private final String url = "http://127.0.0.1:"
             + Main.DEFAULT_SERVLET_PORT + "/"
             + Main.MYAPP
             + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 
-    @Before
-    public void setUp() throws Exception {
-        Main.deploy();
-        System.out.println("url = " + url);
-    }
-
-
-    @After
-    public void tearDown() throws Exception {
-        Main.stop();
-    }
 
 
     @Test
@@ -85,8 +75,8 @@ public class ServletTest {
         message.fileName = "test.xml";
 
         message.fileContend = Base64.getEncoder().encode("Hello World".getBytes());
-        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
-        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        final String messageToXml = RequestEncodingHelper.serializeMessageToXml(message);
+        final String encodedXml = RequestEncodingHelper.encodeIntoBase64(messageToXml);
         return encodedXml;
 
     }
@@ -95,8 +85,8 @@ public class ServletTest {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
         message.action = FileStoreAction.CHECK;
         message.fileName = "test.xml";
-        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
-        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        final String messageToXml = RequestEncodingHelper.serializeMessageToXml(message);
+        final String encodedXml = RequestEncodingHelper.encodeIntoBase64(messageToXml);
         return encodedXml;
     }
 
@@ -104,8 +94,8 @@ public class ServletTest {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
         message.action = FileStoreAction.RESTORE;
         message.fileName = "test.xml";
-        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
-        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        final String messageToXml = RequestEncodingHelper.serializeMessageToXml(message);
+        final String encodedXml = RequestEncodingHelper.encodeIntoBase64(messageToXml);
         return encodedXml;
     }
 
