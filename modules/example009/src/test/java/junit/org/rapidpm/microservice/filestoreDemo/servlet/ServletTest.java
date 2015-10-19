@@ -11,12 +11,12 @@ import org.rapidpm.microservice.filestoredemo.api.FileStoreAction;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
 import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
+import org.rapidpm.microservice.filestoredemo.impl.RequestEncoder;
 import org.rapidpm.microservice.filestoredemo.servlet.ServletService;
 
 import javax.servlet.annotation.WebServlet;
-import javax.xml.bind.*;
+import javax.xml.bind.JAXB;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
@@ -44,7 +44,7 @@ public class ServletTest {
 
 
     @Test
-    public void testServletGetReqArchive() throws Exception {
+    public void testServlet001() throws Exception {
         String request = String.format("%s?xml=%s", url, getBase64ArchiveXml());
         final Content returnContent = Request.Get(request).execute().returnContent();
 
@@ -55,7 +55,7 @@ public class ServletTest {
     }
 
     @Test
-    public void testServletGetReqCheckArchive() throws Exception {
+    public void testServlet002() throws Exception {
         String request = String.format("%s?xml=%s", url, getBase64CheckIfArchiveXml());
         final Content returnContent = Request.Get(request).execute().returnContent();
 
@@ -66,7 +66,7 @@ public class ServletTest {
     }
 
     @Test
-    public void testServletGetRestoreFromArchive() throws Exception {
+    public void testServlet003() throws Exception {
         String request = String.format("%s?xml=%s", url, getBase64RestoreFromArchiveXml());
         final Content returnContent = Request.Get(request).execute().returnContent();
 
@@ -79,17 +79,15 @@ public class ServletTest {
     }
 
 
-
     private String getBase64ArchiveXml() throws UnsupportedEncodingException {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
         message.action = FileStoreAction.ARCHIVE;
         message.fileName = "test.xml";
 
         message.fileContend = Base64.getEncoder().encode("Hello World".getBytes());
-        StringWriter writer = new StringWriter();
-        JAXB.marshal(message, writer);
-        byte[] encode = Base64.getUrlEncoder().encode(writer.toString().getBytes());
-        return new String(encode);
+        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
+        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        return encodedXml;
 
     }
 
@@ -97,23 +95,18 @@ public class ServletTest {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
         message.action = FileStoreAction.CHECK;
         message.fileName = "test.xml";
-
-        StringWriter writer = new StringWriter();
-        JAXB.marshal(message, writer);
-        byte[] encode = Base64.getUrlEncoder().encode(writer.toString().getBytes());
-        return new String(encode);
-
+        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
+        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        return encodedXml;
     }
 
     private String getBase64RestoreFromArchiveXml() throws UnsupportedEncodingException {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
         message.action = FileStoreAction.RESTORE;
         message.fileName = "test.xml";
-        StringWriter writer = new StringWriter();
-        JAXB.marshal(message, writer);
-        byte[] encode = Base64.getUrlEncoder().encode(writer.toString().getBytes());
-        return new String(encode);
-
+        final String messageToXml = RequestEncoder.serializeMessageToXml(message);
+        final String encodedXml = RequestEncoder.encodeIntoBase64(messageToXml);
+        return encodedXml;
     }
 
 }

@@ -4,6 +4,7 @@ import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
 import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
 import org.rapidpm.microservice.filestoredemo.impl.FileStoreService;
+import org.rapidpm.microservice.filestoredemo.impl.RequestEncoder;
 import org.rapidpm.microservice.filestoredemo.impl.UnknownActionException;
 
 import javax.inject.Inject;
@@ -56,11 +57,9 @@ public class ServletService extends HttpServlet {
     private FileStoreServiceMessage extractFileStoreServiceMessage(HttpServletRequest req) {
         String xmlBase64 = req.getParameter("xml");
 
-        byte[] xmlParameter = new byte[0];
-        xmlParameter = Base64.getUrlDecoder().decode(xmlBase64.getBytes());
+        final String fromBase64 = RequestEncoder.decodeFromBase64(xmlBase64);
+        final FileStoreServiceMessage message = RequestEncoder.parseXmlToMessage(fromBase64);
 
-        StringReader reader = new StringReader(new String(xmlParameter));
-        FileStoreServiceMessage message = JAXB.unmarshal(reader, FileStoreServiceMessage.class);
         return message;
 
 

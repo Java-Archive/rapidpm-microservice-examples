@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
 import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
 import org.rapidpm.microservice.filestoredemo.impl.FileStoreService;
+import org.rapidpm.microservice.filestoredemo.impl.RequestEncoder;
 import org.rapidpm.microservice.filestoredemo.impl.UnknownActionException;
 
 import javax.inject.Inject;
@@ -18,15 +19,16 @@ import java.io.IOException;
 public class RestService {
     @Inject
     FileStoreService fileStoreService;
+    private ObjectMapper mapper = new ObjectMapper();
 
     @GET()
     @Produces("application/json")
     public String handleRequest(@QueryParam("json") String json) throws IOException, UnknownActionException {
-        ObjectMapper mapper = new ObjectMapper();
-        byte[] jsonParameter = DatatypeConverter.parseBase64Binary(json);
-        FileStoreServiceMessage fileStoreServiceMessage = mapper.readValue(jsonParameter, FileStoreServiceMessage.class);
+        final String realJson = RequestEncoder.decodeFromBase64(json);
 
-        FileStoreResponse fileStoreResponse = fileStoreService.handleMessage(fileStoreServiceMessage);
+        final FileStoreServiceMessage message = mapper.readValue(realJson, FileStoreServiceMessage.class);
+
+        final FileStoreResponse fileStoreResponse = fileStoreService.handleMessage(message);
         return mapper.writeValueAsString(fileStoreResponse);
     }
 }
