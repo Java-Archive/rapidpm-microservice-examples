@@ -1,6 +1,7 @@
 package org.rapidpm.microservice.m2.remote;
 
-import org.rapidpm.proxybuilder.dynamicobjectadapter.DynamicObjectAdapterBuilder;
+
+import org.rapidpm.proxybuilder.objectadapter.annotations.dynamicobjectadapter.*;
 
 /**
  * Created by svenruppert on 31.08.15.
