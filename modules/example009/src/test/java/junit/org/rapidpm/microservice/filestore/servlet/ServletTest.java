@@ -1,6 +1,6 @@
-package junit.org.rapidpm.microservice.filestoredemo.servlet;
+package junit.org.rapidpm.microservice.filestore.servlet;
 
-import junit.org.rapidpm.microservice.filestoredemo.BaseMicroserviceTest;
+import junit.org.rapidpm.microservice.filestore.BaseMicroserviceTest;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.After;
@@ -8,12 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.microservice.Main;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreAction;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
-import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
-import org.rapidpm.microservice.filestoredemo.impl.RequestEncodingHelper;
-import org.rapidpm.microservice.filestoredemo.servlet.ServletService;
+import org.rapidpm.microservice.filestore.api.FileStoreAction;
+import org.rapidpm.microservice.filestore.api.FileStoreResponse;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.StorageStatus;
+import org.rapidpm.microservice.filestore.impl.RequestEncodingHelper;
+import org.rapidpm.microservice.filestore.servlet.ServletService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.xml.bind.JAXB;

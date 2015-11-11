@@ -1,12 +1,12 @@
-package junit.org.rapidpm.microservice.filestoredemo.storage;
+package junit.org.rapidpm.microservice.filestore.storage;
 
 import org.mapdb.BTreeMap;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.rapidpm.ddi.Produces;
 import org.rapidpm.ddi.producer.Producer;
-import org.rapidpm.microservice.filestoredemo.api.FileStorage;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.FileStorage;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
 
 import java.io.File;
 import java.io.FileNotFoundException;

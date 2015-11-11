@@ -1,8 +1,8 @@
-package org.rapidpm.microservice.filestoredemo.impl;
+package org.rapidpm.microservice.filestore.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
 
 import javax.xml.bind.JAXB;
 import java.io.IOException;

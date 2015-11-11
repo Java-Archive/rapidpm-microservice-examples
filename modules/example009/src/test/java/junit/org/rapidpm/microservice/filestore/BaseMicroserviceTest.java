@@ -1,4 +1,4 @@
-package junit.org.rapidpm.microservice.filestoredemo;
+package junit.org.rapidpm.microservice.filestore;
 
 import org.junit.After;
 import org.junit.Before;

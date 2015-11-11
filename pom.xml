@@ -47,7 +47,7 @@
   </issueManagement>
   <ciManagement>
     <system>TravisCI</system>
-    <url>https://travis-ci.org/RapidPM/rapidpm-microservice/-examples</url>
+    <url>https://travis-ci.org/RapidPM/rapidpm-microservice/examples</url>
   </ciManagement>
   <licenses>
     <license>

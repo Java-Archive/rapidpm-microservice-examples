@@ -1,9 +1,9 @@
-package org.rapidpm.microservice.filestoredemo.impl;
+package org.rapidpm.microservice.filestore.impl;
 
-import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
-import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
-import org.rapidpm.microservice.filestoredemo.api.FileStorage;
+import org.rapidpm.microservice.filestore.api.FileStoreResponse;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.StorageStatus;
+import org.rapidpm.microservice.filestore.api.FileStorage;
 
 import javax.inject.Inject;
 import java.io.FileNotFoundException;

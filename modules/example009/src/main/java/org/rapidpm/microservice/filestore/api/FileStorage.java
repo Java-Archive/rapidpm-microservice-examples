@@ -1,4 +1,4 @@
-package org.rapidpm.microservice.filestoredemo.api;
+package org.rapidpm.microservice.filestore.api;
 
 
 import java.io.FileNotFoundException;

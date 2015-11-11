@@ -1,11 +1,11 @@
-package org.rapidpm.microservice.filestoredemo.servlet;
+package org.rapidpm.microservice.filestore.servlet;
 
-import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
-import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
-import org.rapidpm.microservice.filestoredemo.impl.FileStoreService;
-import org.rapidpm.microservice.filestoredemo.impl.RequestEncodingHelper;
-import org.rapidpm.microservice.filestoredemo.impl.UnknownActionException;
+import org.rapidpm.microservice.filestore.api.FileStoreResponse;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.StorageStatus;
+import org.rapidpm.microservice.filestore.impl.FileStoreService;
+import org.rapidpm.microservice.filestore.impl.RequestEncodingHelper;
+import org.rapidpm.microservice.filestore.impl.UnknownActionException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

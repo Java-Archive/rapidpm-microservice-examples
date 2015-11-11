@@ -1,4 +1,4 @@
-package org.rapidpm.microservice.filestoredemo.api;
+package org.rapidpm.microservice.filestore.api;
 
 /**
  * Created by b.bosch on 13.10.2015.

@@ -1,18 +1,18 @@
-package junit.org.rapidpm.microservice.filestoredemo.rest;
+package junit.org.rapidpm.microservice.filestore.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import junit.org.rapidpm.microservice.filestoredemo.BaseMicroserviceTest;
+import junit.org.rapidpm.microservice.filestore.BaseMicroserviceTest;
 import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreAction;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreResponse;
-import org.rapidpm.microservice.filestoredemo.api.FileStoreServiceMessage;
-import org.rapidpm.microservice.filestoredemo.api.StorageStatus;
-import org.rapidpm.microservice.filestoredemo.impl.RequestEncodingHelper;
+import org.rapidpm.microservice.filestore.api.FileStoreAction;
+import org.rapidpm.microservice.filestore.api.FileStoreResponse;
+import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
+import org.rapidpm.microservice.filestore.api.StorageStatus;
+import org.rapidpm.microservice.filestore.impl.RequestEncodingHelper;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

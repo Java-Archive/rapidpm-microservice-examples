@@ -11,6 +11,16 @@
 
   <artifactId>rapidpm-microservice-examples-modules-example008-services-ms02</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.rapidpm.proxybuilder</groupId>
+      <artifactId>rapidpm-proxybuilder-modules-objectadapter-generator-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.rapidpm.proxybuilder</groupId>
+      <artifactId>rapidpm-proxybuilder-modules-objectadapter-generator-processors</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
