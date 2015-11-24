@@ -7,14 +7,14 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>rapidpm-dependencies</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
   </parent>
 
 
   <groupId>org.rapidpm.microservice</groupId>
   <artifactId>rapidpm-microservice-examples</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <modules>
     <module>modules</module>
   </modules>
@@ -47,7 +47,7 @@
   </issueManagement>
   <ciManagement>
     <system>TravisCI</system>
-    <url>https://travis-ci.org/RapidPM/rapidpm-microservice/-examples</url>
+    <url>https://travis-ci.org/RapidPM/rapidpm-microservice/examples</url>
   </ciManagement>
   <licenses>
     <license>
