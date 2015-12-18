@@ -64,10 +64,7 @@
       <groupId>org.rapidpm.microservice</groupId>
       <artifactId>rapidpm-microservice-modules-core</artifactId>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>org.rapidpm.dynamic-cdi</groupId>-->
-      <!--<artifactId>rapidpm-dynamic-cdi</artifactId>-->
-    <!--</dependency>-->
+
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
@@ -80,14 +77,11 @@
     </dependency>
   </dependencies>
 
-
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -115,15 +109,6 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-
-      <!-- Generate coveralls reports from Travis -->
-      <plugin>
-        <groupId>org.eluder.coveralls</groupId>
-        <artifactId>coveralls-maven-plugin</artifactId>
-        <configuration>
-          <repoToken>MtaJdTDFVQJ0vKDhcVSdrPLfI0LlfyZw0</repoToken>
-        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.rapidpm.ddi.DI;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.demo.service.ServiceImplA;
 import org.rapidpm.microservice.demo.servlet.ServletService;
@@ -24,6 +25,7 @@ public class ServletServiceTest001 {
 
   @Before
   public void setUp() throws Exception {
+    DI.clearReflectionModel();
     Main.deploy();
     System.out.println("url = " + url);
   }
@@ -32,6 +34,7 @@ public class ServletServiceTest001 {
   @After
   public void tearDown() throws Exception {
     Main.stop();
+    DI.clearReflectionModel();
   }
 
 

@@ -17,9 +17,7 @@ import java.io.PrintWriter;
 @WebServlet(urlPatterns = "/servletservice")
 public class ServletService extends HttpServlet {
 
-
   @Inject BusinessModule businessModule;
-
 
   @Override
   protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {

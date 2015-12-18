@@ -13,11 +13,9 @@ build:
 branch
 master:
 [![Dependency Status](https://www.versioneye.com/user/projects/55a3a45e3239390021000540/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55a3a45e3239390021000540)
-[![Coverage Status](https://coveralls.io/repos/RapidPM/rapidpm-microservice-examples/badge.svg?branch=master&service=github)](https://coveralls.io/github/RapidPM/rapidpm-microservice-examples?branch=master)
 
 develop:
 [![Dependency Status](https://www.versioneye.com/user/projects/55a3a44f32393900180005b2/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55a3a44f32393900180005b2)
-[![Coverage Status](https://coveralls.io/repos/RapidPM/rapidpm-microservice-examples/badge.svg?branch=develop&service=github)](https://coveralls.io/github/RapidPM/rapidpm-microservice-examples?branch=develop)
 
 
 # Activating Kotlin
