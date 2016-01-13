@@ -5,7 +5,7 @@
   <parent>
     <artifactId>rapidpm-microservice-examples-modules</artifactId>
     <groupId>org.rapidpm.microservice</groupId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <relativePath>./../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -19,7 +19,6 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib</artifactId>
-      <version>${kotlin.version}</version>
     </dependency>
   </dependencies>
   <build>
