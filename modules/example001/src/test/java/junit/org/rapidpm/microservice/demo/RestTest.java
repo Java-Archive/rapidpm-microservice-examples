@@ -1,11 +1,9 @@
 package junit.org.rapidpm.microservice.demo;
 
 import org.jboss.resteasy.test.TestPortProvider;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.test.PortUtils;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -14,6 +12,12 @@ import javax.ws.rs.client.ClientBuilder;
  * Created by svenruppert on 07.07.15.
  */
 public class RestTest {
+  @BeforeClass
+  public static void setUpClass() {
+    final PortUtils portUtils = new PortUtils();
+    System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+    System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+  }
 
   @Before
   public void setUp() throws Exception {
