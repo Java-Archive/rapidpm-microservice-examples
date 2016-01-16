@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import java.time.LocalDateTime;
 
 /**
- * Created by svenruppert on 11.08.15.
+ * Created by Sven Ruppert on 11.08.15.
  */
 @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = false, displayName = "Exampl006")
 @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)

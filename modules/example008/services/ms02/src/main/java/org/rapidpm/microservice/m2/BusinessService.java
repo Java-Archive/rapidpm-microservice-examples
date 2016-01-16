@@ -1,7 +1,7 @@
 package org.rapidpm.microservice.m2;
 
 /**
- * Created by svenruppert on 31.08.15.
+ * Created by Sven Ruppert on 31.08.15.
  */
 
 import org.rapidpm.ddi.Proxy;

@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Created by svenruppert on 30.07.15.
+ * Created by Sven Ruppert on 30.07.15.
  */
 @Path("hotelrestservice")
 public class HotelRestService {

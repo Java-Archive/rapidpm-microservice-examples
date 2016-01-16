@@ -8,7 +8,7 @@ import javax.ws.rs.client.WebTarget;
 import java.time.LocalDateTime;
 
 /**
- * Created by svenruppert on 31.08.15.
+ * Created by Sven Ruppert on 31.08.15.
  */
 public class ServiceImpl implements Service {
   private static final String SERVICE_URL = "http://127.0.0.1:" + Main.DEFAULT_REST_PORT + Main.CONTEXT_PATH_REST + "/demoservice";
@@ -21,8 +21,7 @@ public class ServiceImpl implements Service {
   @Override
   public int remoteAdd(final int a, final int b) {
     final WebTarget webTarget = CLIENT.target(SERVICE_URL);
-    final Integer entity = (Integer) webTarget.path(a + "").path(b + "").request().get().getEntity();
-    return entity;
+    return (Integer) webTarget.path(a + "").path(b + "").request().get().getEntity();
   }
 
 

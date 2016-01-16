@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 //import javax.inject.Inject;
 
 /**
- * Created by sven on 27.05.15.
+ * Created by Sven Ruppert on 27.05.15.
  */
 @Path("/metrics")
 public class Resource {

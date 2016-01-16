@@ -1,15 +1,15 @@
 package org.rapidpm.microservice.filestore.impl;
 
+import org.rapidpm.microservice.filestore.api.FileStorage;
 import org.rapidpm.microservice.filestore.api.FileStoreResponse;
 import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
 import org.rapidpm.microservice.filestore.api.StorageStatus;
-import org.rapidpm.microservice.filestore.api.FileStorage;
 
 import javax.inject.Inject;
 import java.io.FileNotFoundException;
 
 /**
- * Created by b.bosch on 13.10.2015.
+ * Created by Sven Ruppert on 13.10.2015.
  */
 public class FileStoreService {
 
@@ -34,15 +34,14 @@ public class FileStoreService {
         return fileStoreResponse;
     }
 
-    private FileStoreResponse restore(FileStoreServiceMessage message) {
+    private FileStoreResponse checkAndArchive(FileStoreServiceMessage message) {
         FileStoreResponse response = new FileStoreResponse();
-        try {
-            response.base64File = fileStorage.getFileFromArchive(message.fileName);
-            response.status = StorageStatus.RESTORED;
-        } catch (FileNotFoundException e) {
-            response.status = StorageStatus.NOT_ARCHIVED;
+        if (!fileStorage.isFileArchived(message.fileName)) {
+            fileStorage.archiveFile(message);
+            response.status = StorageStatus.ARCHIVED;
+        } else {
+            response.status = StorageStatus.ALREADY_ARCHIVED;
         }
-
         return response;
     }
 
@@ -56,14 +55,15 @@ public class FileStoreService {
         return response;
     }
 
-    private FileStoreResponse checkAndArchive(FileStoreServiceMessage message) {
+    private FileStoreResponse restore(FileStoreServiceMessage message) {
         FileStoreResponse response = new FileStoreResponse();
-        if (!fileStorage.isFileArchived(message.fileName)) {
-            fileStorage.archiveFile(message);
-            response.status = StorageStatus.ARCHIVED;
-        } else {
-            response.status = StorageStatus.ALREADY_ARCHIVED;
+        try {
+            response.base64File = fileStorage.getFileFromArchive(message.fileName);
+            response.status = StorageStatus.RESTORED;
+        } catch (FileNotFoundException e) {
+            response.status = StorageStatus.NOT_ARCHIVED;
         }
+
         return response;
     }
 

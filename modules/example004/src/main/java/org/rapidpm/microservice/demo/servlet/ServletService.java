@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by svenruppert on 28.07.15.
+ * Created by Sven Ruppert on 28.07.15.
  */
 @WebServlet(urlPatterns = "/servletservice")
 public class ServletService extends HttpServlet {

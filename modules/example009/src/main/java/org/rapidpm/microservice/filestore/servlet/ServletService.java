@@ -56,9 +56,8 @@ public class ServletService extends HttpServlet {
         String xmlBase64 = req.getParameter("xml");
 
         final String fromBase64 = RequestEncodingHelper.decodeFromBase64(xmlBase64);
-        final FileStoreServiceMessage message = RequestEncodingHelper.parseXmlToMessage(fromBase64);
 
-        return message;
+        return RequestEncodingHelper.parseXmlToMessage(fromBase64);
 
 
     }

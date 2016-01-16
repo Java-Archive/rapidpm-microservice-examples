@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by svenruppert on 30.07.15.
+ * Created by Sven Ruppert on 30.07.15.
  */
 public class HotelDAO {
 
@@ -20,7 +20,7 @@ public class HotelDAO {
 //  @Inject JDBCConnectionPools connectionPools; //TODO wie realisieren ??
   //TDOD wo wird da initialisiert ? wie in MockModus geschaltet ?
 
-  private HikariDataSource pool = JDBCConnectionPools.instance().getDataSource(POOLNAME);
+  private final HikariDataSource pool = JDBCConnectionPools.instance().getDataSource(POOLNAME);
 
 
   public Hotel saveHotel(final String hotelname, final int price) {

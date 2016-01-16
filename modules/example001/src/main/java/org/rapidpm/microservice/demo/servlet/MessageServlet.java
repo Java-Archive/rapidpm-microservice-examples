@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by sven on 27.05.15.
+ * Created by Sven Ruppert on 27.05.15.
  */
 @WebInitParam(value = "Hello World", name = "message")
 @WebServlet(urlPatterns = "/test")

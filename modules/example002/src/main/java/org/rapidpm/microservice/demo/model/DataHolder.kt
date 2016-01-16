@@ -1,7 +1,7 @@
 package org.rapidpm.microservice.demo.model
 
 /**
- * Created by svenruppert on 07.06.15.
+ * Created by Sven Ruppert on 07.06.15.
  */
 public class DataHolder {
   public var txtA: String? = null

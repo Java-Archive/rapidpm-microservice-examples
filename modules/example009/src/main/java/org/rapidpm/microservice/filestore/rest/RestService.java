@@ -14,7 +14,7 @@ import javax.ws.rs.QueryParam;
 import java.io.IOException;
 
 /**
- * Created by b.bosch on 13.10.2015.
+ * Created by Sven Ruppert on 13.10.2015.
  */
 @Path("filestore")
 public class RestService {

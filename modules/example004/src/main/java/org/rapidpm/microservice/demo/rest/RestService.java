@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 /**
- * Created by svenruppert on 28.07.15.
+ * Created by Sven Ruppert on 28.07.15.
  */
 @Path("/restservice")
 public class RestService {

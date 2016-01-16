@@ -4,7 +4,7 @@ package org.rapidpm.microservice.filestore.api;
 import java.io.FileNotFoundException;
 
 /**
- * Created by b.bosch on 13.10.2015.
+ * Created by Sven Ruppert on 13.10.2015.
  */
 public interface FileStorage {
 

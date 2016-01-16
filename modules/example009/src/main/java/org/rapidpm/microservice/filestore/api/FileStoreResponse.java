@@ -1,7 +1,7 @@
 package org.rapidpm.microservice.filestore.api;
 
 /**
- * Created by b.bosch on 13.10.2015.
+ * Created by Sven Ruppert on 13.10.2015.
  */
 public class FileStoreResponse {
     public StorageStatus status;

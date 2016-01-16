@@ -1,7 +1,7 @@
 package org.rapidpm.microservice.demo.model;
 
 /**
- * Created by svenruppert on 30.07.15.
+ * Created by Sven Ruppert on 30.07.15.
  */
 public class Hotel {
 

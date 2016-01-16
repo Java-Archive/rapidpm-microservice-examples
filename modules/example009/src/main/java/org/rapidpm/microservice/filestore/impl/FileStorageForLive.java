@@ -4,7 +4,7 @@ import org.rapidpm.microservice.filestore.api.FileStorage;
 import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
 
 /**
- * Created by b.bosch on 13.10.2015.
+ * Created by Sven Ruppert on 13.10.2015.
  */
 public class FileStorageForLive implements FileStorage {
     @Override

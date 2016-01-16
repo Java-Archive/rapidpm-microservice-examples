@@ -9,16 +9,18 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 
 /**
- * Created by b.bosch on 14.10.2015.
+ * Created by Sven Ruppert on 14.10.2015.
  */
 public class RequestEncodingHelper {
 
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    private static final Base64.Encoder URL_ENCODER = Base64.getUrlEncoder();
-    private static final Base64.Decoder URL_DECODER = Base64.getUrlDecoder();
+    private static final Encoder URL_ENCODER = Base64.getUrlEncoder();
+    private static final Decoder URL_DECODER = Base64.getUrlDecoder();
 
     private RequestEncodingHelper() {
     }

@@ -5,7 +5,7 @@ import com.vaadin.server.VaadinSession;
 import java.util.Map;
 
 /**
- * Created by svenruppert on 20.08.15.
+ * Created by Sven Ruppert on 20.08.15.
  */
 public class SessionUtils {
 

@@ -1,12 +1,12 @@
 package org.rapidpm.ddi.services;
 
+import org.rapidpm.ddi.Produces;
 import org.rapidpm.ddi.producer.Producer;
 
-import org.rapidpm.ddi.Produces;
 import java.time.LocalDateTime;
 
 /**
- * Created by svenruppert on 10.08.15.
+ * Created by Sven Ruppert on 10.08.15.
  */
 @Produces(Service.class)
 public class ServiceProducer implements Producer<Service> {

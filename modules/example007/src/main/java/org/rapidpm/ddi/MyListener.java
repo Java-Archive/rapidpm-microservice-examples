@@ -4,7 +4,7 @@ import javax.servlet.annotation.WebListener;
 import java.time.LocalDateTime;
 
 /**
- * Created by svenruppert on 20.08.15.
+ * Created by Sven Ruppert on 20.08.15.
  */
 @WebListener
 public class MyListener extends in.virit.WidgetSet {

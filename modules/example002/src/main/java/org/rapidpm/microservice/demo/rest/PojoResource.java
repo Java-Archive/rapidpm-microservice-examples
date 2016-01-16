@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 /**
- * Created by svenruppert on 07.06.15.
+ * Created by Sven Ruppert on 07.06.15.
  */
 
 @Path("pojo")

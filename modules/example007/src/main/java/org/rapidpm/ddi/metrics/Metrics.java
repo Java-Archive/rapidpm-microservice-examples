@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by svenruppert on 20.08.15.
+ * Created by Sven Ruppert on 20.08.15.
  */
 public class Metrics {
-  private static Metrics ourInstance = new Metrics();
+  private static final Metrics ourInstance = new Metrics();
   public List<KeyValue> data = new ArrayList<>();
 
   private Metrics() {

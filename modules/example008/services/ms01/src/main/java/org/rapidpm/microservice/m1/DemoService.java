@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 
 
 /**
- * Created by svenruppert on 31.08.15.
+ * Created by Sven Ruppert on 31.08.15.
  */
 
 @Path("/demoservice")
