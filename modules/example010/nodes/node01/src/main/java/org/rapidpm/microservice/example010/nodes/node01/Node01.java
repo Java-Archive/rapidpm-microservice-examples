@@ -15,6 +15,9 @@ import java.util.Map;
 public class Node01 {
 
 
+  private Node01() {
+  }
+
   public static void main(String[] args) throws IOException {
 
     final Config config = new Config();

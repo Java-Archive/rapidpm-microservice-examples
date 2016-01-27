@@ -8,14 +8,14 @@ import java.util.Objects;
  * Created by Sven Ruppert on 20.08.15.
  */
 public class Metrics {
-  private static final Metrics ourInstance = new Metrics();
+  private static final Metrics OUR_INSTANCE = new Metrics();
   public List<KeyValue> data = new ArrayList<>();
 
   private Metrics() {
   }
 
   public static Metrics getInstance() {
-    return ourInstance;
+    return OUR_INSTANCE;
   }
 
   public static class KeyValue {
