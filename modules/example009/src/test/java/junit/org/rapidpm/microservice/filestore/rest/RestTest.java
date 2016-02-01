@@ -1,3 +1,22 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package junit.org.rapidpm.microservice.filestore.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,9 +36,6 @@ import org.rapidpm.microservice.filestore.impl.RequestEncodingHelper;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
-/**
- * Created by b.bosch on 13.10.2015.
- */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RestTest extends BaseMicroserviceTest{
 
@@ -34,30 +50,18 @@ public class RestTest extends BaseMicroserviceTest{
         Assert.assertEquals(StorageStatus.NOT_ARCHIVED, fileStoreResponse.status);
 
     }
-    @Test
-    public void testRest002() throws Exception {
-        final String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getInsertJson());
-        String response = testJsonRequest(jsonBase64);
-        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
-        Assert.assertEquals(StorageStatus.ARCHIVED, fileStoreResponse.status);
-    }
-    @Test
-    public void testRest003() throws JsonProcessingException {
-        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getRestoreJson());
-        String response = testJsonRequest(jsonBase64);
-        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
-        Assert.assertEquals(StorageStatus.RESTORED, fileStoreResponse.status);
-        Assert.assertEquals(FILE_CONTENT, RequestEncodingHelper.decodeFromBase64(fileStoreResponse.base64File));
-    }
-    @Test
-    public void testRest004() throws Exception {
-        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getCheckJson());
-        String response = testJsonRequest(jsonBase64);
-        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
-        Assert.assertEquals(StorageStatus.ALREADY_ARCHIVED, fileStoreResponse.status);
-    }
 
+    private String getRestoreJson() throws JsonProcessingException {
+        FileStoreServiceMessage message = new FileStoreServiceMessage();
 
+        message.action = FileStoreAction.RESTORE;
+        message.fileName = "TEST.XML";
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        return mapper.writeValueAsString(message);
+
+    }
 
     private String testJsonRequest(String jsonBase64) {
         Client client = ClientBuilder.newClient();
@@ -76,6 +80,14 @@ public class RestTest extends BaseMicroserviceTest{
         return val;
     }
 
+    @Test
+    public void testRest002() throws Exception {
+        final String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getInsertJson());
+        String response = testJsonRequest(jsonBase64);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.ARCHIVED, fileStoreResponse.status);
+    }
+
     private String getInsertJson() throws JsonProcessingException {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
 
@@ -89,24 +101,29 @@ public class RestTest extends BaseMicroserviceTest{
 
     }
 
+    @Test
+    public void testRest003() throws JsonProcessingException {
+        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getRestoreJson());
+        String response = testJsonRequest(jsonBase64);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.RESTORED, fileStoreResponse.status);
+        Assert.assertEquals(FILE_CONTENT, RequestEncodingHelper.decodeFromBase64(fileStoreResponse.base64File));
+    }
+
+    @Test
+    public void testRest004() throws Exception {
+        String jsonBase64 = RequestEncodingHelper.encodeIntoBase64(getCheckJson());
+        String response = testJsonRequest(jsonBase64);
+        final FileStoreResponse fileStoreResponse = RequestEncodingHelper.parseJsonToMessage(response, FileStoreResponse.class);
+        Assert.assertEquals(StorageStatus.ALREADY_ARCHIVED, fileStoreResponse.status);
+    }
+
     private String getCheckJson() throws JsonProcessingException {
         FileStoreServiceMessage message = new FileStoreServiceMessage();
 
         message.action = FileStoreAction.CHECK;
         message.fileName = "TEST.XML";
 
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        return mapper.writeValueAsString(message);
-
-    }
-
-    private String getRestoreJson() throws JsonProcessingException {
-        FileStoreServiceMessage message = new FileStoreServiceMessage();
-
-        message.action = FileStoreAction.RESTORE;
-        message.fileName = "TEST.XML";
 
         ObjectMapper mapper = new ObjectMapper();
 
