@@ -49,7 +49,7 @@ public class RequestEncodingHelper {
     }
 
     public static FileStoreServiceMessage parseXmlToMessage(String xml) {
-        StringReader reader = new StringReader(new String(xml));
+        StringReader reader = new StringReader(xml);
         return JAXB.unmarshal(reader, FileStoreServiceMessage.class);
     }
 
