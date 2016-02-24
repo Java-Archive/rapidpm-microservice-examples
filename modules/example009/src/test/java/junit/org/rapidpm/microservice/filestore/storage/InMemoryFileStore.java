@@ -32,8 +32,9 @@ import java.io.FileNotFoundException;
 
 public class InMemoryFileStore implements FileStorage {
 
-    static DB db = DBMaker.newHeapDB().closeOnJvmShutdown().make();
-    private final BTreeMap<String, byte[]> test = db.getTreeMap("test");
+    static DB db = DBMaker.memoryDB().make();
+    private final BTreeMap<String, byte[]> test = (BTreeMap<String, byte[]>) db.treeMap("test").createOrOpen();
+
 
     @Override
     public void archiveFile(FileStoreServiceMessage message) {

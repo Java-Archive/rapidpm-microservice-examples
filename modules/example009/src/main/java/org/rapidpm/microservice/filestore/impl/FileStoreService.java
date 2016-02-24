@@ -29,8 +29,7 @@ import java.io.FileNotFoundException;
 
 public class FileStoreService {
 
-    @Inject
-    FileStorage fileStorage;
+    @Inject FileStorage fileStorage;
 
     public FileStoreResponse handleMessage(FileStoreServiceMessage message) throws UnknownActionException {
         FileStoreResponse fileStoreResponse;

@@ -19,29 +19,49 @@
 
 package junit.org.rapidpm.microservice.filestore;
 
+import junit.org.rapidpm.microservice.filestore.storage.InMemoryFileStore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.rapidpm.ddi.DI;
+import org.rapidpm.ddi.ResponsibleFor;
+import org.rapidpm.ddi.implresolver.ClassResolver;
+import org.rapidpm.ddi.scopes.provided.JVMSingletonInjectionScope;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.filestore.api.FileStorage;
 import org.rapidpm.microservice.test.PortUtils;
 
 
 public class BaseMicroserviceTest {
 
-    @BeforeClass
-    public static void setUpClass() {
-        final PortUtils portUtils = new PortUtils();
-        System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-        System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-    }
+  @BeforeClass
+  public static void setUpClass() {
+    final PortUtils portUtils = new PortUtils();
+    System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+    System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
 
-    @Before
-    public void setUp() throws Exception {
-        Main.deploy();
-    }
+    DI.clearReflectionModel();
+    DI.activatePackages("org.rapidpm");
+    DI.activatePackages(BaseMicroserviceTest.class);
+    DI.registerClassForScope(InMemoryFileStore.class, JVMSingletonInjectionScope.class.getSimpleName());
 
-    @After
-    public void tearDown() throws Exception {
-        Main.stop();
+  }
+
+  @Before
+  public void setUp() throws Exception {
+    Main.deploy();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    Main.stop();
+  }
+
+  @ResponsibleFor(FileStorage.class)
+  public static class FileStorageClassResolver implements ClassResolver<FileStorage> {
+    @Override
+    public Class<? extends FileStorage> resolve(final Class<FileStorage> interf) {
+      return InMemoryFileStore.class;
     }
+  }
 }
