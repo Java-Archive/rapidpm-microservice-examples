@@ -37,6 +37,10 @@ public class BaseMicroserviceTest {
   @BeforeClass
   public static void setUpClass() {
     final PortUtils portUtils = new PortUtils();
+    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+
+
     System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
     System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
 

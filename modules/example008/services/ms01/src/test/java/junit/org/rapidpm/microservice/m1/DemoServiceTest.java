@@ -38,6 +38,10 @@ public class DemoServiceTest {
 
   @Before
   public void setUp() throws Exception {
+    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+
+
     DI.activatePackages("org.rapidpm");
     DI.activatePackages("junit.org.rapidpm");
     Main.deploy();
