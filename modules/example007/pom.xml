@@ -100,19 +100,15 @@
 
     <dependency>
       <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-testbench-api</artifactId>
-      <version>${vaadin.version}</version>
+      <artifactId>vaadin-testbench</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-themes</artifactId>
-      <version>${vaadin.version}</version>
     </dependency>
   </dependencies>
-  <properties>
-    <wscdn-maven-plugin.version>0.0.2</wscdn-maven-plugin.version>
-  </properties>
+
   <build>
     <plugins>
 
@@ -185,7 +181,10 @@
       <plugin>
         <groupId>com.vaadin.wscdn</groupId>
         <artifactId>wscdn-maven-plugin</artifactId>
-        <version>${wscdn-maven-plugin.version}</version>
+        <configuration>
+          <downloadedDirectory>target/classes/VAADIN/widgetsets</downloadedDirectory>
+          <download>true</download>
+        </configuration>
         <executions>
           <execution>
             <phase>generate-sources</phase>
