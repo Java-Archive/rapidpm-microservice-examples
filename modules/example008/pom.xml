@@ -34,15 +34,4 @@
     <module>services</module>
   </modules>
 
-
-  <dependencies>
-    <!--TDD-->
-    <dependency>
-      <groupId>org.rapidpm.microservice</groupId>
-      <artifactId>rapidpm-microservice-modules-core-testutils</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!--TDD-->
-
-  </dependencies>
 </project>
