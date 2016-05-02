@@ -29,7 +29,6 @@ import org.rapidpm.ddi.implresolver.ClassResolver;
 import org.rapidpm.ddi.scopes.provided.JVMSingletonInjectionScope;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.filestore.api.FileStorage;
-import org.rapidpm.microservice.test.PortUtils;
 
 
 public class BaseMicroserviceTest {

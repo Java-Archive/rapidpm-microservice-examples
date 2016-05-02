@@ -24,7 +24,6 @@ import org.apache.http.client.fluent.Request;
 import org.junit.*;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.demo.servlet.MessageServlet;
-import org.rapidpm.microservice.test.PortUtils;
 
 import javax.servlet.annotation.WebServlet;
 

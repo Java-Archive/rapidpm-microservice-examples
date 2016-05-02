@@ -23,7 +23,6 @@ import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.*;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.demo.service.ServiceImplA;
-import org.rapidpm.microservice.test.PortUtils;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
