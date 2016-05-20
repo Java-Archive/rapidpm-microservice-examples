@@ -21,6 +21,7 @@ package junit.org.rapidpm.microservice.demo;
 
 import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.*;
+import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
 
 import javax.ws.rs.client.Client;

@@ -22,6 +22,7 @@ package junit.org.rapidpm.microservice.demo;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.*;
+import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.demo.servlet.MessageServlet;
 
