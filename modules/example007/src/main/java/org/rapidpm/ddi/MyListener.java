@@ -19,11 +19,13 @@
 
 package org.rapidpm.ddi;
 
+import com.vaadin.wscdn.WidgetSet;
+
 import javax.servlet.annotation.WebListener;
 import java.time.LocalDateTime;
 
 @WebListener
-public class MyListener extends in.virit.WidgetSet {
+public class MyListener extends WidgetSet {
 
   public MyListener() {
     System.out.println("LocalDateTime.now() = " + LocalDateTime.now());

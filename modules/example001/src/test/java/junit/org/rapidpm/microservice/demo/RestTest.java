@@ -21,8 +21,8 @@ package junit.org.rapidpm.microservice.demo;
 
 import org.jboss.resteasy.test.TestPortProvider;
 import org.junit.*;
+import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
-import org.rapidpm.microservice.test.PortUtils;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -33,6 +33,10 @@ public class RestTest {
     final PortUtils portUtils = new PortUtils();
     System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
     System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+
+    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+
   }
 
   @Before

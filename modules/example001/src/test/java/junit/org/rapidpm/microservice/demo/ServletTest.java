@@ -22,9 +22,9 @@ package junit.org.rapidpm.microservice.demo;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.*;
+import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.demo.servlet.MessageServlet;
-import org.rapidpm.microservice.test.PortUtils;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -37,6 +37,10 @@ public class ServletTest {
 
   @BeforeClass
   public static void setUpClass() {
+    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+
+
     final PortUtils portUtils = new PortUtils();
     System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
     System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");

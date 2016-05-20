@@ -24,7 +24,7 @@
   <parent>
     <artifactId>rapidpm-microservice-examples-modules</artifactId>
     <groupId>org.rapidpm.microservice</groupId>
-    <version>0.0.7</version>
+    <version>0.1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -73,10 +73,10 @@
     </dependency>
     <!--JSON-->
 
-    <dependency>
-      <groupId>in.virit.vwscdn</groupId>
-      <artifactId>vwscdn-client</artifactId>
-    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.vaadin</groupId>-->
+    <!--<artifactId>viritin</artifactId>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-server</artifactId>
@@ -100,16 +100,15 @@
 
     <dependency>
       <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-testbench-api</artifactId>
-      <version>${vaadin.version}</version>
+      <artifactId>vaadin-testbench</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-themes</artifactId>
-      <version>${vaadin.version}</version>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
 
@@ -180,9 +179,12 @@
       <!--</configuration>-->
       <!--</plugin>-->
       <plugin>
-        <groupId>in.virit.vwscdn</groupId>
-        <artifactId>vwscdn-maven-plugin</artifactId>
-        <version>${vwscdn.version}</version>
+        <groupId>com.vaadin.wscdn</groupId>
+        <artifactId>wscdn-maven-plugin</artifactId>
+        <configuration>
+          <downloadedDirectory>target/classes/VAADIN/widgetsets</downloadedDirectory>
+          <download>true</download>
+        </configuration>
         <executions>
           <execution>
             <phase>generate-sources</phase>
