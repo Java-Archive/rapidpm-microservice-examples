@@ -44,6 +44,7 @@
     <name>RapidPM</name>
     <url>http://www.rapidpm.org</url>
   </organization>
+  <name>RapidPM MicroService Examples</name>
   <scm>
     <url>https://github.com/RapidPM/rapidpm-microservice-examples</url>
     <connection>scm:git:https://github.com/RapidPM/rapidpm-microservice-examples.git</connection>
