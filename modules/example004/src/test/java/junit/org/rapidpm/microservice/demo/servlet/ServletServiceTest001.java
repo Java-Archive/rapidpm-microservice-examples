@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.ddi.DI;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.demo.service.ServiceImplA;
 import org.rapidpm.microservice.demo.servlet.ServletService;
 
@@ -35,14 +36,14 @@ import javax.servlet.annotation.WebServlet;
 public class ServletServiceTest001 {
 
   private final String url = "http://127.0.0.1:"
-      + Main.DEFAULT_SERVLET_PORT + "/"
-      + Main.MYAPP
+      + MainUndertow.DEFAULT_SERVLET_PORT + "/"
+      + MainUndertow.MYAPP
       + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
     DI.clearReflectionModel();
     Main.deploy();

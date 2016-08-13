@@ -27,6 +27,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.demo.model.HotelDAO;
 import org.rapidpm.microservice.demo.rest.HotelRestService;
 import org.rapidpm.microservice.persistence.jdbc.JDBCConnectionPools;
@@ -42,7 +43,7 @@ import java.sql.SQLException;
 public class HotelRestServiceTest {
 
 
-  private final String restAppPath = Main.CONTEXT_PATH_REST;
+  private final String restAppPath = MainUndertow.CONTEXT_PATH_REST;
   private final String ressourcePath = "/" + HotelRestService.class.getAnnotation(Path.class).value();
   private Server hsqlServer;
   private JDBCConnectionPools connectionPools;
@@ -50,8 +51,8 @@ public class HotelRestServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
     hsqlServer = new Server();
     hsqlServer.setLogWriter(null);

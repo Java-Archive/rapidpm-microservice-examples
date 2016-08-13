@@ -24,7 +24,7 @@ import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.Assert;
 import org.junit.Test;
-import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.filestore.api.FileStoreAction;
 import org.rapidpm.microservice.filestore.api.FileStoreResponse;
 import org.rapidpm.microservice.filestore.api.FileStoreServiceMessage;
@@ -53,8 +53,8 @@ public class ServletTest extends BaseMicroserviceTest{
 
   private String createURL() {
     return "http://127.0.0.1:"
-        + System.getProperty(Main.SERVLET_PORT_PROPERTY) + "/"
-        + Main.MYAPP
+        + System.getProperty(MainUndertow.SERVLET_PORT_PROPERTY) + "/"
+        + MainUndertow.MYAPP
         + ServletService.class.getAnnotation(WebServlet.class).urlPatterns()[0];
   }
 

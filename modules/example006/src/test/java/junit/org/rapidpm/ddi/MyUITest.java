@@ -26,6 +26,7 @@ import org.rapidpm.ddi.DI;
 import org.rapidpm.ddi.MyUIServlet;
 import org.rapidpm.ddi.reflections.ReflectionUtils;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,14 +34,14 @@ import java.util.Set;
 
 public class MyUITest {
 
-  private final String url = "http://127.0.0.1:" + Main.DEFAULT_SERVLET_PORT
-      + Main.MYAPP
+  private final String url = "http://127.0.0.1:" + MainUndertow.DEFAULT_SERVLET_PORT
+      + MainUndertow.MYAPP
       + MyUIServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
 
     DI.activatePackages("junit.org.rapidpm");

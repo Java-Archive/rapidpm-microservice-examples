@@ -19,7 +19,7 @@
 
 package org.rapidpm.microservice.m2.remote;
 
-import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -27,7 +27,7 @@ import javax.ws.rs.client.WebTarget;
 import java.time.LocalDateTime;
 
 public class ServiceImpl implements Service {
-  private static final String SERVICE_URL = "http://127.0.0.1:" + Main.DEFAULT_REST_PORT + Main.CONTEXT_PATH_REST + "/demoservice";
+  private static final String SERVICE_URL = "http://127.0.0.1:" + MainUndertow.DEFAULT_REST_PORT + MainUndertow.CONTEXT_PATH_REST + "/demoservice";
   private static final Client CLIENT = ClientBuilder.newClient(); // to expensive
 
   public ServiceImpl() {
