@@ -25,6 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.ddi.DI;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.m1.DemoService;
 import org.rapidpm.microservice.test.RestUtils;
 
@@ -38,8 +39,8 @@ public class DemoServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
 
     DI.activatePackages("org.rapidpm");
@@ -55,7 +56,7 @@ public class DemoServiceTest {
   @Test
   public void testAddValues() throws Exception {
 
-    final String generateBasicReqURL = new RestUtils().generateBasicReqURL(DemoService.class, Main.CONTEXT_PATH_REST);
+    final String generateBasicReqURL = new RestUtils().generateBasicReqURL(DemoService.class, MainUndertow.CONTEXT_PATH_REST);
     Client client = ClientBuilder.newClient();
     final Builder request = client
         .target(generateBasicReqURL)

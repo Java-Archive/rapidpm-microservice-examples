@@ -24,6 +24,7 @@ import org.apache.http.client.fluent.Request;
 import org.junit.*;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.demo.servlet.MessageServlet;
 
 import javax.servlet.annotation.WebServlet;
@@ -37,15 +38,15 @@ public class ServletTest {
 
   @BeforeClass
   public static void setUpClass() {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
 
     final PortUtils portUtils = new PortUtils();
-    System.setProperty(Main.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-    System.setProperty(Main.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-    url = "http://127.0.0.1:" + System.getProperty(Main.SERVLET_PORT_PROPERTY) + "/"
-        + Main.MYAPP
+    System.setProperty(MainUndertow.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+    System.setProperty(MainUndertow.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
+    url = "http://127.0.0.1:" + System.getProperty(MainUndertow.SERVLET_PORT_PROPERTY) + "/"
+        + MainUndertow.MYAPP
         + MessageServlet.class.getAnnotation(WebServlet.class).urlPatterns()[0];
     Main.deploy();
   }

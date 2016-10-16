@@ -22,6 +22,8 @@ package org.rapidpm.microservice.demo.model;
 import com.zaxxer.hikari.HikariDataSource;
 import org.rapidpm.microservice.persistence.jdbc.JDBCConnectionPools;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,13 +32,18 @@ import java.util.List;
 
 public class HotelDAO {
 
+  @Inject private JDBCConnectionPools connectionPools;
 
   public static final String POOLNAME = "HOTEL_DAO_POOL";
 
 //  @Inject JDBCConnectionPools connectionPools; //TODO wie realisieren ??
   //TDOD wo wird da initialisiert ? wie in MockModus geschaltet ?
 
-  private final HikariDataSource pool = JDBCConnectionPools.instance().getDataSource(POOLNAME);
+  @PostConstruct
+  private void postConstruct(){
+    pool = connectionPools.getDataSource(POOLNAME);
+  }
+  private HikariDataSource pool;
 
 
   public Hotel saveHotel(final String hotelname, final int price) {

@@ -26,11 +26,15 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.rapidpm.ddi.DI;
+import org.rapidpm.ddi.scopes.provided.JVMSingletonInjectionScope;
 import org.rapidpm.microservice.Main;
+import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.demo.model.HotelDAO;
 import org.rapidpm.microservice.demo.rest.HotelRestService;
 import org.rapidpm.microservice.persistence.jdbc.JDBCConnectionPools;
 
+import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -41,17 +45,20 @@ import java.sql.SQLException;
 
 public class HotelRestServiceTest {
 
+  @Inject private JDBCConnectionPools connectionPools;
 
-  private final String restAppPath = Main.CONTEXT_PATH_REST;
+  private final String restAppPath = MainUndertow.CONTEXT_PATH_REST;
   private final String ressourcePath = "/" + HotelRestService.class.getAnnotation(Path.class).value();
   private Server hsqlServer;
-  private JDBCConnectionPools connectionPools;
   private String generateURL;
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty(Main.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(Main.SERVLET_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
+    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
+
+    DI.registerClassForScope(JDBCConnectionPools.class, JVMSingletonInjectionScope.class.getName());
+    DI.activateDI(this);
 
     hsqlServer = new Server();
     hsqlServer.setLogWriter(null);
@@ -60,7 +67,7 @@ public class HotelRestServiceTest {
     hsqlServer.setDatabasePath(0, "file:target/" + HotelRestServiceTest.class.getSimpleName());
     hsqlServer.start();
 
-    connectionPools = JDBCConnectionPools.instance()
+    connectionPools
         .addJDBCConnectionPool(HotelDAO.POOLNAME)
         .withAutoCommit(false)
         .withJdbcURL("jdbc:hsqldb:file:target/" + HotelRestServiceTest.class.getSimpleName())
@@ -82,6 +89,8 @@ public class HotelRestServiceTest {
     connectionPools.shutdownPools();
     hsqlServer.stop();
     Main.stop();
+
+    DI.clearReflectionModel();
   }
 
   @Test
