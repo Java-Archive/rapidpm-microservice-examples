@@ -40,9 +40,10 @@ public class HotelDAO {
   //TDOD wo wird da initialisiert ? wie in MockModus geschaltet ?
 
   @PostConstruct
-  private void postConstruct(){
+  private void postConstruct() {
     pool = connectionPools.getDataSource(POOLNAME);
   }
+
   private HikariDataSource pool;
 
 

@@ -131,17 +131,20 @@
       <!--</configuration>-->
       <!--</plugin>-->
       <plugin>
-        <groupId>com.vaadin.wscdn</groupId>
-        <artifactId>wscdn-maven-plugin</artifactId>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-maven-plugin</artifactId>
         <configuration>
-          <downloadedDirectory>target/classes/VAADIN/widgetsets</downloadedDirectory>
-          <download>true</download>
+            <widgetsetMode>cdn</widgetsetMode>
         </configuration>
         <executions>
           <execution>
             <phase>generate-sources</phase>
             <goals>
-              <goal>generate</goal>
+              <goal>update-theme</goal>
+              <goal>update-widgetset</goal>
+              <goal>compile</goal>
+              <!-- Comment out compile-theme goal to use on-the-fly theme compilation -->
+              <goal>compile-theme</goal>
             </goals>
           </execution>
         </executions>

@@ -27,6 +27,7 @@ import org.rapidpm.ddi.DI;
 import org.rapidpm.ddi.ResponsibleFor;
 import org.rapidpm.ddi.implresolver.ClassResolver;
 import org.rapidpm.ddi.scopes.provided.JVMSingletonInjectionScope;
+import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.MainUndertow;
 import org.rapidpm.microservice.filestore.api.FileStorage;

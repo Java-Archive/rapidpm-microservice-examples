@@ -57,7 +57,7 @@ public class HotelRestServiceTest {
     System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
     System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
 
-    DI.registerClassForScope(JDBCConnectionPools.class, JVMSingletonInjectionScope.class.getName());
+    DI.registerClassForScope(JDBCConnectionPools.class, JVMSingletonInjectionScope.class.getSimpleName());
     DI.activateDI(this);
 
     hsqlServer = new Server();

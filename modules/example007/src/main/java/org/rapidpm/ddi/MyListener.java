@@ -19,7 +19,8 @@
 
 package org.rapidpm.ddi;
 
-import com.vaadin.wscdn.WidgetSet;
+
+import com.vaadin.client.WidgetSet;
 
 import javax.servlet.annotation.WebListener;
 import java.time.LocalDateTime;
