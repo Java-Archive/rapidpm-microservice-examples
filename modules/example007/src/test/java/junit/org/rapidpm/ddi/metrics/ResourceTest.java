@@ -17,6 +17,7 @@
  * under the License.
  */
 
+
 package junit.org.rapidpm.ddi.metrics;
 
 import org.jboss.resteasy.test.TestPortProvider;
@@ -25,7 +26,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.rapidpm.microservice.Main;
-import org.rapidpm.microservice.MainUndertow;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -33,9 +33,6 @@ import javax.ws.rs.client.ClientBuilder;
 public class ResourceTest {
   @Before
   public void setUp() throws Exception {
-    System.setProperty(MainUndertow.REST_HOST_PROPERTY, "127.0.0.1");
-    System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, "127.0.0.1");
-
     Main.deploy();
   }
 
@@ -58,9 +55,9 @@ public class ResourceTest {
     final String generateURL = TestPortProvider.generateURL(restAppPath + ressourcePath);
     System.out.println("generateURL = " + generateURL);
     String val = client
-        .target(generateURL)
-        .request()
-        .get(String.class);
+            .target(generateURL)
+            .request()
+            .get(String.class);
     System.out.println("val = " + val);
     client.close();
   }
