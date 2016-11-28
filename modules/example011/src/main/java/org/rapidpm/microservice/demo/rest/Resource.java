@@ -19,23 +19,28 @@
 
 package org.rapidpm.microservice.demo.rest;
 
-import com.google.gson.Gson;
 
-import javax.ws.rs.GET;
+import com.google.gson.Gson;
+import org.rapidpm.microservice.demo.model.Dojo;
+import org.rapidpm.microservice.demo.model.Duel;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-@Path("pojo")
-public class PojoResource {
+@Path("/dojo")
+public class Resource {
 
-  @GET()
-  @Produces("text/plain")
-  public String get() {
-//    return  Arrays.asList("A", "B", service.doWork());
-    final DataHolder dataHolder = new DataHolder();
-    dataHolder.setTxtA("A");
-    dataHolder.setTxtb("B");
-    return new Gson().toJson(dataHolder);
+  private Gson gson = new Gson();
+
+  @POST
+  @Path("whoWins")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public String whoWins(String duel) {
+    return Dojo.fight(gson.fromJson(duel, Duel.class));
   }
 
 

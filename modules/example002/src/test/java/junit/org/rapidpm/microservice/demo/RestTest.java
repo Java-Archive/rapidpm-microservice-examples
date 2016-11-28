@@ -27,7 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.MainUndertow;
-import org.rapidpm.microservice.demo.model.DataHolder;
+import org.rapidpm.microservice.model.DataHolder;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
