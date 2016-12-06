@@ -16,12 +16,15 @@ package org.rapidpm.microservice.demo.model;
  */
 public class Dojo {
 
+  private Dojo() {
+  }
+
   public static String fight(final Duel duel) {
     final Fighter fighter01 = duel.fighter01;
     final Fighter fighter02 = duel.fighter02;
     String starter = fighter01.name;
 
-    while(fighter01.health > 0 && fighter02.health > 0) {
+    while (fighter01.health > 0 && fighter02.health > 0) {
       if (starter.equals(fighter01.name)) {
         fighter02.health = fighter02.health - fighter01.damage;
         starter = fighter02.name;

@@ -22,28 +22,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
+    <artifactId>rapidpm-microservice-examples-modules</artifactId>
     <groupId>org.rapidpm.microservice</groupId>
-    <artifactId>rapidpm-microservice-examples</artifactId>
     <version>0.7.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-microservice-examples-modules</artifactId>
-  <packaging>pom</packaging>
-  <modules>
-    <module>example001</module>
-    <module>example002</module>
-    <module>example003</module>
-    <module>example004</module>
-    <module>example005</module>
-    <module>example006</module>
-    <module>example007</module>
-    <module>example008</module>
-    <module>example009</module>
-    <module>example010</module>
-    <module>example011</module>
-    <module>example012</module>
-  </modules>
-
+  <artifactId>rapidpm-microservice-examples-modules-example012</artifactId>
 
 </project>

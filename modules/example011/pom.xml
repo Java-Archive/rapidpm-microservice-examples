@@ -29,7 +29,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-microservice-examples-modules-example001</artifactId>
+  <artifactId>rapidpm-microservice-examples-modules-example011</artifactId>
   <dependencies>
     <!--JSON-->
     <dependency>

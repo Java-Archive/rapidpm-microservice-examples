@@ -134,7 +134,7 @@
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-maven-plugin</artifactId>
         <configuration>
-            <widgetsetMode>cdn</widgetsetMode>
+          <widgetsetMode>cdn</widgetsetMode>
         </configuration>
         <executions>
           <execution>
@@ -225,7 +225,13 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration combine.self="append">
+          <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+        </configuration>
+      </plugin>
 
     </plugins>
 
